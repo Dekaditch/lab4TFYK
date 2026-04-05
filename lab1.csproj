@@ -61,8 +61,16 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Managers\ClipboardManager.cs" />
     <Compile Include="Managers\DocumentManager.cs" />
+    <Compile Include="Managers\PhoneNumberAutomaton.cs" />
+    <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="Managers\TextInfoManager.cs" />
     <Compile Include="Models\ActionType.cs" />
     <Compile Include="Models\EditAction.cs" />
@@ -73,6 +81,7 @@
     <Compile Include="Forms\HelpForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutForm.resx">
@@ -80,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

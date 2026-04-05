@@ -43,7 +43,6 @@ namespace lab1
         {
             this.KeyPreview = true;
 
-            // Настройка горячих клавиш для меню
             createFileStrip.ShortcutKeys = Keys.Control | Keys.N;
             openFileStrip.ShortcutKeys = Keys.Control | Keys.O;
             saveFileStrip.ShortcutKeys = Keys.Control | Keys.S;
@@ -56,7 +55,6 @@ namespace lab1
             infoShowStrip.ShortcutKeys = Keys.F1;
         }
 
-        // Обработчики меню "Файл"
         private void createFileStrip_Click(object sender, EventArgs e)
         {
             documentManager.NewDocument();
@@ -82,7 +80,6 @@ namespace lab1
             Close();
         }
 
-        // Обработчики меню "Правка"
         private void undoStrip_Click(object sender, EventArgs e)
         {
             editManager.Undo();
@@ -123,7 +120,6 @@ namespace lab1
             editManager.SelectAll();
         }
 
-        // Обработчики меню "Текст" (будут реализованы позже)
         private void taskDescStrip_Click(object sender, EventArgs e)
         {
             textInfoManager.ShowTaskStatement();
@@ -159,14 +155,11 @@ namespace lab1
             textInfoManager.ShowSourceCode();
         }
 
-        // Обработчик меню "Пуск" (будет реализован позже)
         private void startStrip_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Функция запуска анализатора будет реализована позже.",
-                "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           
         }
 
-        // Обработчики меню "Справка"
         private void infoShowStrip_Click(object sender, EventArgs e)
         {
             helpManager.ShowHelp();
@@ -177,7 +170,6 @@ namespace lab1
             helpManager.ShowAbout();
         }
 
-        // Обработчики ToolStrip
         private void createToolStrip_Click(object sender, EventArgs e)
         {
             documentManager.NewDocument();
@@ -238,7 +230,6 @@ namespace lab1
             helpManager.ShowHelp();
         }
 
-        // Вспомогательные методы
         private void RichTextBox_TextChanged(object sender, EventArgs e)
         {
             documentManager.SetHasChanges(true);
@@ -247,7 +238,6 @@ namespace lab1
 
         private void UpdateUIState()
         {
-            // Обновление состояния пунктов меню
             undoStrip.Enabled = editManager.CanUndo;
             redoStrip.Enabled = editManager.CanRedo;
             cutStrip.Enabled = editManager.CanCut;
@@ -255,7 +245,6 @@ namespace lab1
             pasteStrip.Enabled = editManager.CanPaste;
             deleteStrip.Enabled = editManager.CanDelete;
 
-            // Обновление состояния кнопок панели инструментов
             undoToolStrip.Enabled = editManager.CanUndo;
             redoToolStrip.Enabled = editManager.CanRedo;
             cutToolStrip.Enabled = editManager.CanCut;
@@ -272,10 +261,15 @@ namespace lab1
             }
         }
 
-        // Метод для обновления заголовка формы (вызывается из DocumentManager)
         public void UpdateFormTitle(string title)
         {
             this.Text = title;
+        }
+
+        private void searchStrip_Click(object sender, EventArgs e)
+        {
+            var searchForm = new lab1.Forms.SearchForm(richTextBox1);
+            searchForm.Show();
         }
     }
 }

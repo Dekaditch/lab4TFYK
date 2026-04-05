@@ -1,8 +1,8 @@
-﻿using lab1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using lab1.Models;
 
 namespace lab1.Managers
 {
@@ -25,7 +25,6 @@ namespace lab1.Managers
         {
             if (!isProcessingUndoRedo)
             {
-                SaveStateForUndo();
                 redoStack.Clear();
             }
         }
@@ -105,6 +104,7 @@ namespace lab1.Managers
         {
             if (!string.IsNullOrEmpty(textBox.SelectedText))
             {
+                SaveStateForUndo();
                 clipboardManager.CutText(ref textBox);
                 redoStack.Clear();
             }
@@ -117,14 +117,20 @@ namespace lab1.Managers
 
         public void Paste()
         {
-            clipboardManager.PasteText(textBox);
-            redoStack.Clear();
+            if (clipboardManager.CanPaste())
+            {
+                SaveStateForUndo();
+                clipboardManager.PasteText(textBox);
+                redoStack.Clear();
+            }
         }
 
         public void Delete()
         {
             if (!string.IsNullOrEmpty(textBox.SelectedText))
             {
+                SaveStateForUndo();
+
                 int selectionStart = textBox.SelectionStart;
                 textBox.Text = textBox.Text.Remove(textBox.SelectionStart, textBox.SelectionLength);
                 textBox.SelectionStart = selectionStart;
