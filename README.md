@@ -216,4 +216,5 @@ C:\folder\ (нет файла), C:\file.bad (плохое расширение),
 
 Автоматный граф  
 
-<img width="752" height="690" alt="image" src="https://github.com/user-attachments/assets/e6af1aca-8980-427d-afb8-644e2d016032" />
+<img width="540" height="600" alt="image" src="https://github.com/user-attachments/assets/71b886d9-cc62-4228-a41a-2f7b456ee0d8" />
+
